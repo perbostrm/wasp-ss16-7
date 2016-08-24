@@ -1,3 +1,6 @@
 [submodule "tum_ardrone"]
 	path = tum_ardrone
 	url = https://github.com/tum-vision/tum_ardrone.git
+[submodule "ardrone_tutorials"]
+	path = ardrone_tutorials
+	url = https://github.com/mikehamer/ardrone_tutorials.git
