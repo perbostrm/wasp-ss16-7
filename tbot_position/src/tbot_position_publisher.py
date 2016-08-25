@@ -3,6 +3,7 @@
 import rospy
 from geometry_msgs.msg import PoseWithCovarianceStamped
 from geometry_msgs.msg import Pose2D
+from tf.transformations import euler_from_quaternion
 import time
 
 def position_callback(data):
@@ -12,13 +13,13 @@ def position_callback(data):
     pose2D.y = data.pose.pose.position.y
 
     # Orientation
-    or_x = data.pose.pose.orientation.x
-    or_y = data.pose.pose.orientation.y
-    or_z = data.pose.pose.orientation.z
-    or_w = data.pose.pose.orientation.w
+    (roll,pitch,yaw) = euler_from_quaternion((data.pose.pose.orientation.x,
+                                              data.pose.pose.orientation.y,
+                                              data.pose.pose.orientation.z,
+                                              data.pose.pose.orientation.w))
 
     # TODO: Implement correct transform for theta
-    pose2D.theta = 1;#atan2(2*or_w*or_z, or_w*or_w - or_z*or_z)
+    pose2D.theta = yaw
 
     pub1.publish(pose2D)
 
