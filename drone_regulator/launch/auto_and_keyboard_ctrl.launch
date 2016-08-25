@@ -19,4 +19,5 @@
 	
 	<!-- Launches the keyboard controller -->
 	<node name="keyboard_controller" pkg="ardrone_tutorials" type="keyboard_controller.py" required="true"/>
+	<node name="simple_drone_regulator" pkg="drone_regulator" type="simple.py" required="true"/>
 </launch>
