@@ -12,15 +12,14 @@ def position_callback(data):
     pose2D.x = data.pose.pose.position.x
     pose2D.y = data.pose.pose.position.y
 
-    # Orientation
+    # Orientation (Angle from the X-axis, in radians)
     (roll,pitch,yaw) = euler_from_quaternion((data.pose.pose.orientation.x,
                                               data.pose.pose.orientation.y,
                                               data.pose.pose.orientation.z,
                                               data.pose.pose.orientation.w))
-
-    # TODO: Implement correct transform for theta
     pose2D.theta = yaw
 
+    # Publish to topic
     pub1.publish(pose2D)
 
 # Intializes everything
@@ -38,4 +37,4 @@ def start():
 
 #Main function
 if __name__ == '__main__':
-	start()
+    start()
