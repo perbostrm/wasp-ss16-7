@@ -4,3 +4,6 @@
 [submodule "ardrone_tutorials"]
 	path = ardrone_tutorials
 	url = https://github.com/mikehamer/ardrone_tutorials.git
+[submodule "host_packages"]
+	path = host_packages
+	url = https://github.com/WASP2016/host_packages.git
