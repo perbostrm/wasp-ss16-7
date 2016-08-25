@@ -32,9 +32,19 @@ def cb_navdata(data):
         engz.act(2)
       else:
         engz.act(0)
+
+    e = data.tags_xc[0]-500
+    if e > 50:
+      engx.act(-2)
+    elif e < -50:
+      engx.act(2)
+    else:
+      engx.act(0)
+    
   elif hastag and engz.ready():
     hastag = False
     engz.act(0)
+    engx.act(0)
 
 
   sendcmd = False
@@ -49,10 +59,15 @@ def cb_navdata(data):
   if engz.next():
     sendcmd = True
     vel.angular.z = engz.val()
+
+  if engx.next():
+    sendcmd = True
+    vel.linear.x = 0.1*engx.val()
   
   if sendcmd: 
     rospy.loginfo(vel)
     pub.publish(vel)
+
 def listener():
   global pub
 
